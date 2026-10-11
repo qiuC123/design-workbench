@@ -1,0 +1,33 @@
+.cw-contact-picker { margin-top: 10px; padding: 10px; border: 1px solid var(--tw-line); border-radius: 7px; background: var(--tw-soft); }
+.cw-contact-picker .tw-owner-options { margin: 0 0 10px; padding: 0; border: 0; background: transparent; }
+.cw-contact-add { display: flex; align-items: end; gap: 8px; }
+.cw-contact-add .tw-field { flex: 1; }
+.cw-contact-add .tw-button { min-height: 38px; }
+.cw-company-changed { margin-top: 8px; color: var(--tw-amber); }
+.cw-legacy { padding: 10px 12px; border: 1px solid var(--tw-line); background: var(--tw-soft); border-radius: 6px; color: var(--tw-muted); font-size: 12px; }
+.cw-legacy summary { cursor: pointer; }
+.cw-legacy p { margin-top: 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cw-contact-list { margin: 18px 0; }
+.cw-contact-row { display: flex; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--tw-line); }
+.cw-contact-row > div:first-child { min-width: 0; }
+.cw-contact-row strong { color: var(--tw-ink); margin-right: 8px; overflow-wrap: anywhere; }
+.cw-contact-row p { color: var(--tw-muted); font-size: 12px; margin-top: 4px; overflow-wrap: anywhere; }
+.cw-contact-form { padding-top: 12px; border-top: 1px solid var(--tw-line); }
+.cw-contact-form h3 { color: var(--tw-ink); font-size: 14px; }
+.cw-company-counts { display: flex; gap: 14px; font-size: 12px; color: var(--tw-secondary); margin: 16px 0; }
+.cw-company-contacts small { color: var(--tw-muted); }
+.cw-company-contacts p { margin-top: 6px; color: var(--tw-secondary); overflow-wrap: anywhere; font-size: 12px; }
+.tw-project-card-footer .tw-button { margin-left: auto; }
+.tw-card-contact { overflow-wrap: anywhere; max-width: 100%; }
+.tw-card-project svg { flex-shrink: 0; }
+.tw-owner-picker legend small { display: inline; }
+@media (max-width: 640px) {
+  .cw-contact-add { flex-wrap: wrap; }
+  .cw-contact-add .tw-field { flex-basis: 100%; }
+  .cw-contact-add .tw-button { min-height: 42px; }
+  .cw-contact-row { flex-wrap: wrap; }
+  .cw-contact-row > div:first-child { flex-basis: 100%; }
+  .tw-owner-chip button { min-height: 36px; }
+}
+.cw-trial-notice { margin-bottom: 18px; padding: 12px 16px; border: 1px solid #b9d5ff; border-radius: 7px; background: #edf5ff; color: #1f4b80; font-size: 12px; }
+.cw-trial-notice p { margin-top: 4px; line-height: 1.7; }

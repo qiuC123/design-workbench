@@ -1,0 +1,57 @@
+name: xu-jian-website
+
+services:
+  web:
+    image: ${SJ_IMAGE:-xu-jian-website:local}
+    build:
+      context: .
+    init: true
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4175:4175"
+    environment:
+      NODE_ENV: production
+      SJ_HOST: 0.0.0.0
+      SJ_PORT: "4175"
+      SJ_DATA_DIR: /app/.data
+      SJ_STATIC_DIR: /app/dist-website
+      SJ_ALLOWED_ORIGINS: ${SJ_ALLOWED_ORIGINS:-http://127.0.0.1:4175,http://localhost:4175}
+      SJ_COOKIE_SECURE: ${SJ_COOKIE_SECURE:-false}
+      SJ_TRUST_PROXY: ${SJ_TRUST_PROXY:-}
+      SJ_SETUP_TOKEN: ${SJ_SETUP_TOKEN:-}
+    volumes:
+      - website-data:/app/.data
+    networks:
+      - website
+
+  # Enable after configuring a real domain, HTTPS origin and secure cookies.
+  caddy:
+    image: caddy:2-alpine
+    profiles: [https]
+    restart: unless-stopped
+    depends_on:
+      web:
+        condition: service_healthy
+    command: [caddy, reverse-proxy, --from, "${SJ_DOMAIN:-localhost}", --to, "web:4175"]
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      website:
+        ipv4_address: 172.30.41.2
+
+networks:
+  website:
+    ipam:
+      config:
+        - subnet: 172.30.41.0/24
+
+volumes:
+  website-data:
+    name: ${SJ_DATA_VOLUME:-xu-jian-website-data}
+  caddy-data:
+  caddy-config:

@@ -1,0 +1,57 @@
+.cw-schedule-view { min-width: 0; }
+.cw-schedule-view .tw-week-title small { margin-left: 10px; font-size: 11px; color: var(--tw-muted); font-weight: 400; }
+.cw-timeline-tools { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 14px 0 7px; color: var(--tw-secondary); font-size: 12px; }
+.cw-timeline-tools > span, .cw-timeline-tools > div { display: flex; align-items: center; gap: 7px; }
+.cw-timeline-tools .tw-icon-button { width: 36px; height: 32px; }
+.cw-timeline { --cw-person-width: 150px; --cw-day-width: 104px; overflow: auto; max-width: 100%; max-height: 72dvh; border: 1px solid var(--tw-line-strong); border-radius: 9px; background: var(--tw-surface); scrollbar-width: auto; scrollbar-color: #a9b5c6 #f1f4f8; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; cursor: grab; }
+.cw-timeline::-webkit-scrollbar { height: 12px; width: 10px; }
+.cw-timeline::-webkit-scrollbar-track { background: #f1f4f8; }
+.cw-timeline::-webkit-scrollbar-thumb { background: #a9b5c6; border: 2px solid #f1f4f8; border-radius: 10px; }
+.cw-timeline.is-dragging, .cw-timeline.is-dragging * { cursor: grabbing !important; user-select: none; }
+.cw-timeline-grid { width: calc(var(--cw-person-width) + var(--days) * var(--cw-day-width)); min-width: 100%; }
+.cw-timeline-head { display: grid; grid-template-columns: var(--cw-person-width) repeat(var(--days), minmax(0, 1fr)); position: sticky; top: 0; z-index: 5; background: var(--tw-soft); border-bottom: 1px solid var(--tw-line-strong); }
+.cw-timeline-corner { position: sticky; left: 0; z-index: 6; display: flex; align-items: center; align-content: center; flex-wrap: wrap; gap: 5px; padding: 12px; border-right: 1px solid var(--tw-line-strong); background: var(--tw-soft); box-shadow: 3px 0 5px #182b4a08; }
+.cw-timeline-corner small { flex-basis: 100%; color: var(--tw-muted); font-size: 11px; }
+.cw-timeline .tw-day { min-height: 80px; gap: 3px; }
+.cw-timeline .tw-day small { min-height: 17px; }
+.cw-timeline [data-week-start='true'] { border-left: 2px solid var(--tw-line-strong); }
+.cw-timeline-row { display: grid; grid-template-columns: var(--cw-person-width) minmax(0, 1fr); border-bottom: 1px solid var(--tw-line); min-height: 138px; }
+.cw-timeline-row:last-child { border-bottom: 0; }
+.cw-timeline .tw-person-info { position: sticky; left: 0; z-index: 3; background: var(--tw-surface); box-shadow: 3px 0 5px #182b4a08; padding: 12px; }
+.cw-timeline .tw-person-info .tw-button { min-height: 32px; }
+.cw-timeline .tw-person-track { grid-template-columns: repeat(var(--days), minmax(0, 1fr)); padding: 9px 0; align-content: center; }
+.cw-timeline .tw-grid-lines { grid-template-columns: repeat(var(--days), minmax(0, 1fr)); }
+.cw-timeline .tw-grid-lines .weekend { background: #f8fafc; }
+.cw-timeline .tw-task-bar { min-height: 70px; padding: 5px 8px; margin-inline: 4px; display: block; }
+.cw-bar-caption { position: sticky; left: calc(var(--cw-person-width) + 10px); display: block; width: max-content; max-width: min(100%, 230px); }
+.cw-bar-caption > strong, .cw-bar-caption > small { display: block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.7; font-size: 11px; }
+.cw-bar-caption > strong { font-size: 12px; font-weight: 600; }
+.cw-timeline .tw-add-day { min-height: 34px; }
+.cw-track-empty { position: relative; z-index: 1; grid-column: 1 / -1; grid-row: 1; color: var(--tw-muted); font-size: 12px; padding: 14px 10px; }
+.cw-track-empty > span { position: sticky; left: calc(var(--cw-person-width) + 10px); display: block; width: max-content; max-width: 230px; }
+.cw-track-empty button { display: flex; gap: 5px; align-items: center; background: transparent; color: var(--tw-blue-strong); text-align: left; margin-top: 5px; }
+@media (max-width: 760px) {
+  .cw-timeline { --cw-person-width: 108px; --cw-day-width: 92px; max-height: 70dvh; border-radius: 7px; }
+  .cw-timeline .tw-person-info { padding: 9px 7px; gap: 5px; }
+  .cw-timeline .tw-person-name { gap: 5px; }
+  .cw-timeline .tw-person-name .tw-avatar { width: 23px; height: 23px; font-size: 10px; }
+  .cw-timeline .tw-person-name strong { font-size: 12px; }
+  .cw-timeline .tw-availability { font-size: 10px; padding: 2px 4px; }
+  .cw-timeline .tw-person-info .tw-button { min-height: 40px; font-size: 11px !important; }
+  .cw-timeline-corner { padding: 10px 7px; font-size: 12px; }
+  .cw-timeline-corner small { font-size: 10px; }
+  .cw-timeline .tw-day { min-height: 76px; }
+  .cw-timeline .tw-add-day { min-height: 44px; }
+  .cw-bar-caption { max-width: min(100%, 165px); }
+  .cw-track-empty > span { max-width: 170px; }
+  .cw-schedule-view .tw-date-control:first-child { flex-wrap: wrap; }
+  .cw-schedule-view .tw-week-title small { display: block; margin-left: 0; }
+  .cw-schedule-view .tw-legend { flex-wrap: wrap; gap: 9px; }
+  .cw-schedule-view .tw-legend label { margin-left: 0; }
+  .cw-timeline-tools { font-size: 11px; }
+  .cw-desktop-hint { display: none; }
+  .tw-content:has(.cw-schedule-view) .tw-stats { display: block; }
+  .tw-content:has(.cw-schedule-view) .tw-stat { display: none; }
+  .tw-content:has(.cw-schedule-view) .tw-stat:last-child { display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 9px 12px; }
+  .tw-content:has(.cw-schedule-view) .tw-stat:last-child strong { font-size: 20px; }
+}

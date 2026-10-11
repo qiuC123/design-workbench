@@ -1,0 +1,33 @@
+# Allow only the sources needed to build the website and run its API.
+**
+!Dockerfile
+!package.json
+!package-lock.json
+!tsconfig*.json
+!vite.config.ts
+!index.html
+!src/
+!src/**
+!public/
+!public/**
+!server/
+!server/**
+
+# Keep local records, credentials and generated output out of image layers.
+**/node_modules/
+**/.git/
+**/.data/
+**/.env
+**/.env.*
+**/setup-token.txt
+**/*.sqlite
+**/*.sqlite-*
+**/*.db
+**/*.db-*
+**/*.log
+**/*.tsbuildinfo
+**/*.pem
+**/*.key
+**/backups/
+**/logs/
+**/work/

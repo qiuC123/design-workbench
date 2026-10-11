@@ -1,0 +1,41 @@
+{
+  "name": "design-workbench",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "dev:website": "vite --mode website --host 127.0.0.1 --port 5174 --strictPort",
+    "build:website": "tsc -b && tsc -p tsconfig.server.json && vite build --mode website --outDir dist-website",
+    "build:website-runtime": "node scripts/build-website-runtime.mjs",
+    "test:website-runtime": "node scripts/smoke-website-runtime.mjs",
+    "start:website": "node --env-file-if-exists=.env --import tsx server/main.ts",
+    "test:website": "tsx --test server/*.test.ts src/website/*.test.ts",
+    "build": "tsc -b && vite build",
+    "build:trial": "tsc -b && vite build --mode dingtalk-trial --outDir dist-trial",
+    "start:trial": "node scripts/trial-server.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "test": "tsx --test src/workspace/*.test.ts",
+    "test:board-v3": "tsx --test src/board/*.test.ts",
+    "test:scheduling-v2": "tsx --test src/scheduling/*.test.ts",
+    "test:legacy": "tsx --test src/domain/*.test.ts",
+    "test:e2e-v3": "node scripts/taskboard-e2e.mjs",
+    "test:e2e-v2": "node scripts/e2e.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tsx": "^4.20.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "esbuild": "0.28.2",
+    "typescript": "~5.9.2",
+    "vite": "^7.1.0"
+  }
+}
